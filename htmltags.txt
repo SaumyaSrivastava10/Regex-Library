@@ -1,0 +1,28 @@
+'''	 we're using regular expressions to detect the various tags used in an HTML document,
+	1) <t> ... </t>
+	2) <t/>
+	3) <t ... </t>
+						'''
+	
+
+
+import re
+def valid(s):
+	result=[]
+	result=re.findall(r"(\<\/\w*\>)",s)
+	r=re.findall(r"\<\w*\/\>",s)
+	r2=re.findall(r"\<\w*",s)
+	result=result+r+r2
+	result=[i.strip("<>/") for i in result]
+	result=list(set(result))
+	result.sort()
+	result.remove("")
+	return result
+T=int(input())
+arr=[]
+c=0
+s=""
+for i in range(0,T):
+    st=input()
+    s=s+st+"\n"
+print(";".join(valid(s)))

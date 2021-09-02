@@ -1,0 +1,24 @@
+'''  We define a word to be a contiguous sequence of one or more word characters that is preceded and succeeded by one or more occurrences of non-word-characters or line terminators. 
+	For example, in the string I l0ve-cheese_?, the 		words are I, l0ve, and cheese_.
+	We define a sub-word as follows:
+
+	A sequence of word characters (i.e., English alphabetic letters, digits, and/or underscores) that occur in the same exact order (i.e., as a contiguous sequence) inside another word.
+	It is preceded and succeeded by word characters only '''
+
+
+import re
+t=int(input())
+m=""
+for i in range(t):
+    m=m+input()+"\n"
+m.strip("\n")
+n=m.split("\W")
+tt=int(input())
+for j in range(tt):
+    f=input()
+    count=0
+    for i in n:
+      a=re.findall(r"[_A-Ba-z0-9]{fluffy}[_A-Ba-z0-9]".format(fluffy=f),i)
+      count+=len(a)
+    print(len(a)) 
+
